@@ -31,16 +31,16 @@ public class PhotographyController {
 		photographyService.insertPhotography(pho);
 		List<Photography> photographys = photographyService.getAllPhotographys();
 		ModelAndView model = new ModelAndView("getPhotographys");
-		model.addObject("Photographys", photographys);
+		model.addObject("photographys", photographys);
 		return model;
 	}
 
     //show all movies saved in db
 	@RequestMapping("/getPhotographys")
 	public ModelAndView getPhotographys() {
-		List<Photography> Photographys = photographyService.getAllPhotographys();
+		List<Photography> photographys = photographyService.getAllPhotographys();
 		ModelAndView model = new ModelAndView("getPhotographys");
-		model.addObject("Photographys", Photographys);
+		model.addObject("photographys", photographys);
 		return model;
 	}
 

@@ -2,6 +2,7 @@ package com.ourevents.dao.impl;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,7 @@ public class ParticipateDaoImpl extends JdbcDaoSupport implements ParticipateDao
 	}
 	 @Override
 	public void insertParticipate(Participate par) {
-		String sql = "INSERT INTO performer VALUES (?,?,?,?)" ;
+		String sql = "INSERT INTO participate VALUES (?,?,?,?)" ;
 		getJdbcTemplate().update(sql, new Object[]{
 				par.getEvenID(),par.getPerformID() ,par.getStart(),par.getEnd()
 		});
@@ -46,8 +47,8 @@ public class ParticipateDaoImpl extends JdbcDaoSupport implements ParticipateDao
 			Participate par = new Participate();
 			par.setEvenID((String)row.get("evenID"));
 			par.setPerformID((String)row.get("performID"));
-			par.setStart((String)row.get("start_time"));
-			par.setEnd((String)row.get("end_time"));
+			par.setStart((Time)row.get("start_time"));
+			par.setEnd((Time)row.get("end_time"));
 //			System.out.println(act);
 			result.add(par);
 		}

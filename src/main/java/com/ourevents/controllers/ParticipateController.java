@@ -39,7 +39,7 @@ public class ParticipateController {
 	@RequestMapping("/getParticipates")
 	public ModelAndView getParticipates() {
 		List<Participate> participates = participateService.getAllParticipates();
-		ModelAndView model = new ModelAndView("getParticiapates");
+		ModelAndView model = new ModelAndView("getParticipates");
 		model.addObject("participates", participates);
 		return model;
 	}

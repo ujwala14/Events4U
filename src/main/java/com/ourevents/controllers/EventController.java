@@ -38,7 +38,10 @@ public class EventController {
 	public ModelAndView processRequest(@ModelAttribute("eve") Event eve) {
 		eventService.insertEvent(eve);
 
-		return new ModelAndView("redirect:/addParticipants/"+eve.getEventId());
+		List<Event> events = eventService.getAllEvents();
+		ModelAndView model = new ModelAndView("getEvents");
+		model.addObject("events", events);
+		return model;
 
 	}
 	

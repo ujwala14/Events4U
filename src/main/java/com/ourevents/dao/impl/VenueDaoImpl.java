@@ -56,6 +56,29 @@ public class VenueDaoImpl extends JdbcDaoSupport implements VenueDao{
 		
 		return result;
 	}
+
+	@Override
+	public List<String> getAllVenueNames() {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM venue";
+		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
+		
+		List<String> result = new ArrayList<String>();
+		for(Map<String, Object> row:rows){
+			result.add((String)row.get("venueName"));
+		}
+		
+		return result;
+	}
+
+	@Override
+	public String getVenueIdFromName(String n) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT venueId FROM venue WHERE venueName = ?";
+
+        return getJdbcTemplate().queryForObject(
+                sql, new Object[]{n}, String.class);
+	}
 	
 
 

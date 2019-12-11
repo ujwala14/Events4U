@@ -61,8 +61,10 @@ th, td {
 			<tr><td>	<label>Enter Description </label></td>
 				<td><form:input path="description" /></td></tr>	
 					
-			<tr><td>	<label>Enter Venue </label></td>
-				<td><form:input path="venId" />
+			<tr><td><label>Select Venue </label></td>
+				<td><form:select path="venId">
+						<form:options items="${venueNames}" />
+					</form:select>
 				</td></tr>
 			
 			<tr><td>	<label>Enter Catering </label></td>

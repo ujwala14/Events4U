@@ -15,11 +15,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ourevents.model.Event;
 import com.ourevents.service.EventService;
+import com.ourevents.service.VenueService;
 
 @Controller
 public class EventController {
 	@Autowired
 	EventService eventService;
+	@Autowired
+	VenueService venueService;
 
     //the welcome page
 	@RequestMapping("/")
@@ -30,15 +33,19 @@ public class EventController {
     //show the add event form and also pass an empty backing bean object to store the form field values
 	@RequestMapping(value = "/addNewEvent", method = RequestMethod.GET)
 	public ModelAndView show() {
-		return new ModelAndView("addEvent", "eve", new Event());
+		List<String> venueNames = venueService.getAllVenueNames();
+		ModelAndView model= new ModelAndView("addEvent", "eve", new Event());
+		model.addObject("venueNames", venueNames);
+		return model;
 	}
 
     //Get the form field values which are populated using the backing bean and store it in db
 	@RequestMapping(value = "/addNewEvent", method = RequestMethod.POST)
 	public ModelAndView processRequest(@ModelAttribute("eve") Event eve) {
+		String vn = eve.getVenId();
+		eve.setVenId(venueService.getVenueIdFromName(vn));
 		System.out.println(eve);
 		eventService.insertEvent(eve);
-
 		List<Event> events = eventService.getAllEvents();
 		ModelAndView model = new ModelAndView("getEvents");
 		model.addObject("events", events);

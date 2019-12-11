@@ -21,4 +21,16 @@ public class VenueServiceImpl implements VenueService {
 		return venueDao.getAllVenues();
 	}
 
+	@Override
+	public List<String> getAllVenueNames() {
+		// TODO Auto-generated method stub
+		return venueDao.getAllVenueNames();
+	}
+
+	@Override
+	public String getVenueIdFromName(String n) {
+		// TODO Auto-generated method stub
+		return venueDao.getVenueIdFromName(n);
+	}
+
 }

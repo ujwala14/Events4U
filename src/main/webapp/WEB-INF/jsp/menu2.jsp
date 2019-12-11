@@ -136,8 +136,8 @@ body {
     	<button class="dropbtn">Venue <i class="fa fa-caret-down"></i>
     	</button>
     	<div class="dropdown-content">
-      		<a href="/AddVenue">Add</a>
-      		<a href="/ShowVenue">Show</a>
+      		<a href="/addNewVenue">Add</a>
+      		<a href="/getVenues">Show</a>
     	</div>
       </div>
       
@@ -145,8 +145,8 @@ body {
     	<button class="dropbtn">Catering <i class="fa fa-caret-down"></i>
     	</button>
     	<div class="dropdown-content">
-      		<a href="/AddCaterer">Add</a>
-      		<a href="/ShowCaterers">Show</a>
+      		<a href="/addNewCaterer">Add</a>
+      		<a href="/getCaterers">Show</a>
     	</div>
       </div>
       
@@ -154,8 +154,8 @@ body {
     	<button class="dropbtn">Photography <i class="fa fa-caret-down"></i>
     	</button>
     	<div class="dropdown-content">
-      		<a href="/AddPhotographer">Add</a>
-      		<a href="/ShowPhotographers">Show</a>
+      		<a href="/addNewPhotographer">Add</a>
+      		<a href="/getPhotographers">Show</a>
     	</div>
       </div>
       
@@ -163,8 +163,8 @@ body {
     	<button class="dropbtn">Equipment <i class="fa fa-caret-down"></i>
     	</button>
     	<div class="dropdown-content">
-      		<a href="/AddEquipment">Add</a>
-      		<a href="/ShowEquipments">Show</a>
+      		<a href="/addNewEquipment">Add</a>
+      		<a href="/getEquipments">Show</a>
     	</div>
       </div>
       

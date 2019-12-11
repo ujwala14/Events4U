@@ -1,11 +1,15 @@
 package com.ourevents.model;
 
+import java.sql.Date;
+import java.sql.Time;
+
 public class Event {
 	String eventId;
 	String eventName;
     String eventType;
-    String date,startTime,endTime;
-    String desc;
+    Date date;
+    Time startTime,endTime;
+    String description;
     String venId,caterId,photoId;
     
 	public String getEventId() {
@@ -26,29 +30,48 @@ public class Event {
 	public void setEventType(String eventType) {
 		this.eventType = eventType;
 	}
-	public String getStartTime() {
+	public Time getStartTime() {
 		return startTime;
 	}
 	public void setStartTime(String startTime) {
-		this.startTime = startTime;
+		this.startTime = Time.valueOf(startTime);
+		//this.startTime = startTime;
 	}
-	public String getEndTime() {
+	public Time getEndTime() {
 		return endTime;
 	}
 	public void setEndTime(String endTime) {
-		this.endTime = endTime;
+		this.endTime = Time.valueOf(endTime);
+		//this.endTime = endTime;
 	}
-	public String getDate() {
+	
+	//these are not regular setter - only used in getEvents
+	public void setStartTime(Time start) {
+		//this.startTime = Time.valueOf(startTime);
+		this.startTime = start;
+	}
+	public void setEndTime(Time end) {
+		//this.endTime = Time.valueOf(endTime);
+		this.endTime = end;
+	}
+	
+	@Override
+	public String toString() {
+		return "Event [eventId=" + eventId + ", eventName=" + eventName + ", eventType=" + eventType + ", date=" + date
+				+ ", startTime=" + startTime + ", endTime=" + endTime + ", description=" + description + ", venId="
+				+ venId + ", caterId=" + caterId + ", photoId=" + photoId + "]";
+	}
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public String getCaterId() {
 		return caterId;

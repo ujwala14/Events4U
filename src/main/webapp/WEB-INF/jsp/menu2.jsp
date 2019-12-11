@@ -42,7 +42,7 @@ body {
   margin: 0;
 }
 
-.navbar a:hover, .subnav:hover .subnavbtn {
+.navbar a:hover, .subnav:hover .subnavbtn,.dropdown:hover .dropbtn {
   background-color: red;
 }
 
@@ -69,30 +69,105 @@ body {
 .subnav:hover .subnav-content {
   display: block;
 }
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+ }
+ .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+} 
 </style>
 
 <div class="navbar">
-    <a href="/">MOVIEMANIA</a>
+    <a href="/">EVENTS4U</a>
   <div class="subnav">
-    <button class="subnavbtn">Movies <i class="fa fa-caret-down"></i></button>
+    <button class="subnavbtn">Events <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="/addNewMovie">Add</a>
-      <a href="/getMovies">Show</a>
-      <a href="/filterMovies">Filter</a>
+      <a href="/addNewEvent">Add</a>
+      <a href="/getEvents">Show</a>
     </div>
   </div> 
   <div class="subnav">
-    <button class="subnavbtn">Actor <i class="fa fa-caret-down"></i></button>
+    <button class="subnavbtn">Performers <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="/addNewActor">Add</a>
-      <a href="/getActors">Show</a>
+      <a href="/addNewPerformer">Add</a>
+      <a href="/getPerformers">Show</a>
     </div>
   </div> 
   <div class="subnav">
-    <button class="subnavbtn">Directors <i class="fa fa-caret-down"></i></button>
+    <button class="subnavbtn">Facilities <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="/addNewDirector">Add</a>
-      <a href="/getDirectors">Show</a>
+    
+      <div class="dropdown">
+    	<button class="dropbtn">Venue <i class="fa fa-caret-down"></i>
+    	</button>
+    	<div class="dropdown-content">
+      		<a href="/AddVenue">Add</a>
+      		<a href="/ShowVenue">Show</a>
+    	</div>
+      </div>
+      
+      <div class="dropdown">
+    	<button class="dropbtn">Catering <i class="fa fa-caret-down"></i>
+    	</button>
+    	<div class="dropdown-content">
+      		<a href="/AddCaterer">Add</a>
+      		<a href="/ShowCaterers">Show</a>
+    	</div>
+      </div>
+      
+      <div class="dropdown">
+    	<button class="dropbtn">Photography <i class="fa fa-caret-down"></i>
+    	</button>
+    	<div class="dropdown-content">
+      		<a href="/AddPhotographer">Add</a>
+      		<a href="/ShowPhotographers">Show</a>
+    	</div>
+      </div>
+      
+      <div class="dropdown">
+    	<button class="dropbtn">Equipment <i class="fa fa-caret-down"></i>
+    	</button>
+    	<div class="dropdown-content">
+      		<a href="/AddEquipment">Add</a>
+      		<a href="/ShowEquipments">Show</a>
+    	</div>
+      </div>
+      
     </div>
     </div>
-    </div>
+</div>

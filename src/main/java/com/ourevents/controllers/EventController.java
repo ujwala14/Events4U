@@ -36,6 +36,7 @@ public class EventController {
     //Get the form field values which are populated using the backing bean and store it in db
 	@RequestMapping(value = "/addNewEvent", method = RequestMethod.POST)
 	public ModelAndView processRequest(@ModelAttribute("eve") Event eve) {
+		System.out.println(eve);
 		eventService.insertEvent(eve);
 
 		List<Event> events = eventService.getAllEvents();

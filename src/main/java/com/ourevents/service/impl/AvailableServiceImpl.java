@@ -2,12 +2,16 @@ package com.ourevents.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.ourevents.dao.AvailableDao;
 import com.ourevents.model.Available;
 import com.ourevents.service.AvailableService;
 
+@Service
 public class AvailableServiceImpl implements AvailableService {
-
+	@Autowired
 	AvailableDao availDao;
 	@Override
 	public void insertAvailable(Available a) {

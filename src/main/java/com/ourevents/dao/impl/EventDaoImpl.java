@@ -1,7 +1,9 @@
 package com.ourevents.dao.impl;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +37,7 @@ public class EventDaoImpl extends JdbcDaoSupport implements EventDao{
 		getJdbcTemplate().update(sql, new Object[]{
 				e.getEventId(),e.getEventName(),e.getEventType(),
 				e.getDate(),e.getStartTime(),e.getEndTime(),
-				e.getDesc(),e.getVenId(),e.getCaterId(),e.getPhotoId()
+				e.getDescription(),e.getVenId(),e.getCaterId(),e.getPhotoId()
 		});
 	}
 	
@@ -49,15 +51,15 @@ public class EventDaoImpl extends JdbcDaoSupport implements EventDao{
 			e.setEventId((String)row.get("eventId"));
 			e.setEventName((String)row.get("eventName"));
 			e.setEventType((String)row.get("eventType"));
-			e.setDate((String)row.get("date"));
-			e.setStartTime((String)row.get("startTime"));
-			e.setEndTime((String)row.get("endTime"));
-			e.setDesc((String)row.get("desc"));
+			e.setDate((Date)row.get("date"));
+			e.setStartTime((Time)row.get("startTime"));
+			e.setEndTime((Time)row.get("endTime"));
+			e.setDescription((String)row.get("description"));
 			e.setVenId((String)row.get("venId"));
 			e.setCaterId((String)row.get("caterId"));
 			e.setPhotoId((String)row.get("photoId"));
 			
-//			System.out.println(e);
+			System.out.println(e);
 			result.add(e);
 		}
 		

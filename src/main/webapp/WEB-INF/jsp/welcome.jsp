@@ -6,7 +6,7 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
-  background-image: url('https://backgrounddownload.com/wp-content/uploads/2018/09/kodi-fanart-background-6.jpg');
+  background-image: url("http://www.merchantpaymentsecosystem.com/files/video/bg/videobg-cover.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   
@@ -17,7 +17,7 @@ body {
 </head>
 <body>
  
-	<center><h3 style="color: red;">Hello Movie Freaks!</h3></center>
+	<center><h3 style="color: red;">Hello!!</h3></center>
 	
 </body>
 </html>

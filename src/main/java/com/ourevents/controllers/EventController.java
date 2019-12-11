@@ -41,6 +41,11 @@ public class EventController {
 		return new ModelAndView("welcome");
 	}
 
+	@RequestMapping("/welcomeAdmin")
+	public ModelAndView firstPageAdmin() {
+		return new ModelAndView("welcomeAdmin");
+	}
+	
     //show the add event form and also pass an empty backing bean object to store the form field values
 	@RequestMapping(value = "/addNewEvent", method = RequestMethod.GET)
 	public ModelAndView show() {

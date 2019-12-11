@@ -113,7 +113,7 @@ body {
 </style>
 
 <div class="navbar">
-    <a href="/">EVENTS4U</a>
+    <a href="/welcomeAdmin">EVENTS4U</a>
   <div class="subnav">
     <button class="subnavbtn">Events <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
@@ -170,4 +170,5 @@ body {
       
     </div>
     </div>
+    <a href="/">Logout</a>
 </div>

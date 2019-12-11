@@ -21,4 +21,16 @@ public class PhotographyServiceImpl implements PhotographyService {
 		return photographyDao.getAllPhotographys();
 	}
 
+	@Override
+	public List<String> getAllPhoNames() {
+		// TODO Auto-generated method stub
+		return photographyDao.getAllPhoNames();
+	}
+
+	@Override
+	public String getPhoIdFromName(String n) {
+		// TODO Auto-generated method stub
+		return photographyDao.getPhoIdFromName(n);
+	}
+
 }

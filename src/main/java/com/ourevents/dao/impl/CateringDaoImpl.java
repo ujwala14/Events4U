@@ -53,5 +53,26 @@ public class CateringDaoImpl extends JdbcDaoSupport implements CateringDao{
 		
 		return result;
 	}
+	@Override
+	public List<String> getAllCateringNames() {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM catering";
+		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
+		
+		List<String> result = new ArrayList<String>();
+		for(Map<String, Object> row:rows){
+			result.add((String)row.get("catName"));
+		}
+		
+		return result;
+	}
+	@Override
+	public String getCateringIdFromName(String n) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT catID FROM catering WHERE catName = ?";
+
+        return getJdbcTemplate().queryForObject(
+                sql, new Object[]{n}, String.class);
+	}
 	
 }

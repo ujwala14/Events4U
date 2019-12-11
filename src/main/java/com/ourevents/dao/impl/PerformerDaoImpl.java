@@ -57,5 +57,26 @@ public class PerformerDaoImpl extends JdbcDaoSupport implements PerformerDao{
 		
 		return result;
 	}
+	@Override
+	public List<String> getAllPerformerNames() {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM performer";
+		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
+		
+		List<String> result = new ArrayList<String>();
+		for(Map<String, Object> row:rows){
+			result.add((String)row.get("performerName"));
+		}
+		
+		return result;
+	}
+	@Override
+	public String getPerformerIdFromName(String n) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT performerID FROM performer WHERE performerName = ?";
+
+        return getJdbcTemplate().queryForObject(
+                sql, new Object[]{n}, String.class);
+	}
 	
 }

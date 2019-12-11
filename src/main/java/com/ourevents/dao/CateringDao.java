@@ -7,4 +7,6 @@ import com.ourevents.model.Catering;
 public interface CateringDao {
 	void insertCatering(Catering cus);
 	List<Catering> getAllCaterings();
+	List<String> getAllCateringNames();
+	String getCateringIdFromName(String n);
 }

@@ -14,7 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import com.ourevents.model.Event;
+import com.ourevents.service.CateringService;
 import com.ourevents.service.EventService;
+import com.ourevents.service.PhotographyService;
 import com.ourevents.service.VenueService;
 
 @Controller
@@ -23,6 +25,10 @@ public class EventController {
 	EventService eventService;
 	@Autowired
 	VenueService venueService;
+	@Autowired
+	CateringService cateringService;
+	@Autowired
+	PhotographyService photoService;
 
     //the welcome page
 	@RequestMapping("/")
@@ -34,8 +40,12 @@ public class EventController {
 	@RequestMapping(value = "/addNewEvent", method = RequestMethod.GET)
 	public ModelAndView show() {
 		List<String> venueNames = venueService.getAllVenueNames();
+		List<String> cateringNames = cateringService.getAllCateringNames();
+		List<String> photoNames = photoService.getAllPhoNames();
 		ModelAndView model= new ModelAndView("addEvent", "eve", new Event());
 		model.addObject("venueNames", venueNames);
+		model.addObject("cateringNames", cateringNames);
+		model.addObject("photoNames", photoNames);
 		return model;
 	}
 
@@ -44,6 +54,18 @@ public class EventController {
 	public ModelAndView processRequest(@ModelAttribute("eve") Event eve) {
 		String vn = eve.getVenId();
 		eve.setVenId(venueService.getVenueIdFromName(vn));
+		String cn = eve.getCaterId();
+		if(cn.equals("None"))
+			eve.setCaterId("None");
+		else
+			eve.setCaterId(cateringService.getCateringIdFromName(cn));
+		
+		String pn = eve.getPhotoId();
+		if(pn.equals("None"))
+			eve.setPhotoId("None");
+		else
+			eve.setPhotoId(photoService.getPhoIdFromName(pn));
+		
 		System.out.println(eve);
 		eventService.insertEvent(eve);
 		List<Event> events = eventService.getAllEvents();

@@ -33,8 +33,11 @@ th, td {
 			<tr><td><label>Enter Participant Id</label></td>
 				<td><form:input path="evenID" /></td></tr>
 			
-			<tr><td>	<label>Enter Name</label></td>
-				<td><form:input path="performID" /></td></tr>
+			<tr><td><label>Select Performer </label></td>
+				<td><form:select path="performID">
+						<form:options items="${performNames}" />
+					</form:select>
+				</td></tr>
 
 			<tr><td>	<label>Enter Performance Start time </label></td>
 				<td><form:input path="start" value="00:00:00"/>

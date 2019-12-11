@@ -21,4 +21,16 @@ public class CateringServiceImpl implements CateringService {
 		return cateringDao.getAllCaterings();
 	}
 
+	@Override
+	public List<String> getAllCateringNames() {
+		// TODO Auto-generated method stub
+		return cateringDao.getAllCateringNames();
+	}
+
+	@Override
+	public String getCateringIdFromName(String n) {
+		// TODO Auto-generated method stub
+		return cateringDao.getCateringIdFromName(n);
+	}
+
 }

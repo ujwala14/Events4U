@@ -53,5 +53,26 @@ public class PhotographyDaoImpl extends JdbcDaoSupport implements PhotographyDao
 		
 		return result;
 	}
+	@Override
+	public List<String> getAllPhoNames() {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM photography";
+		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
+		
+		List<String> result = new ArrayList<String>();
+		for(Map<String, Object> row:rows){
+			result.add((String)row.get("phoName"));
+		}
+		
+		return result;
+	}
+	@Override
+	public String getPhoIdFromName(String n) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT phoID FROM photography WHERE phoName = ?";
+
+        return getJdbcTemplate().queryForObject(
+                sql, new Object[]{n}, String.class);
+	}
 	
 }

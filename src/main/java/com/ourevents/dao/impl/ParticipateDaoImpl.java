@@ -47,8 +47,8 @@ public class ParticipateDaoImpl extends JdbcDaoSupport implements ParticipateDao
 			Participate par = new Participate();
 			par.setEvenID((String)row.get("evenID"));
 			par.setPerformID((String)row.get("performID"));
-			par.setStart((Time)row.get("start_time"));
-			par.setEnd((Time)row.get("end_time"));
+			par.setStart((Time)row.get("start"));
+			par.setEnd((Time)row.get("end"));
 //			System.out.println(act);
 			result.add(par);
 		}

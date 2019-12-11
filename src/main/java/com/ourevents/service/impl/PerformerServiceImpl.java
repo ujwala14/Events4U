@@ -21,4 +21,16 @@ public class PerformerServiceImpl implements PerformerService {
 		return performerDao.getAllPerformers();
 	}
 
+	@Override
+	public List<String> getAllPerformerNames() {
+		// TODO Auto-generated method stub
+		return performerDao.getAllPerformerNames();
+	}
+
+	@Override
+	public String getPerformerIdFromName(String n) {
+		// TODO Auto-generated method stub
+		return performerDao.getPerformerIdFromName(n);
+	}
+
 }

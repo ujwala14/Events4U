@@ -19,7 +19,7 @@ th, td {
   cursor: pointer;
 }
 </style>
-<title>Add Movie</title>
+<title>Add Event</title>
 </head>
 <jsp:include page="menu2.jsp" />
 <center>
@@ -67,13 +67,19 @@ th, td {
 					</form:select>
 				</td></tr>
 			
-			<tr><td>	<label>Enter Catering </label></td>
-				<td><form:input path="caterId" />
-				</td></tr>		
+			<tr><td><label>Select Caterer </label></td>
+				<td><form:select path="caterId">
+						<form:option value="None" label="None"/>
+						<form:options items="${cateringNames}" />
+					</form:select>
+				</td></tr>	
 					
-			<tr><td>	<label>Enter Photograher </label></td>
-				<td><form:input path="photoId" />
-				</td></tr>
+			<tr><td><label>Select Photographer </label></td>
+				<td><form:select path="photoId">
+						<form:option value="None" label="None"/>
+						<form:options items="${photoNames}" />
+					</form:select>
+				</td></tr>	
 				
 			</table>
 			<br><br>

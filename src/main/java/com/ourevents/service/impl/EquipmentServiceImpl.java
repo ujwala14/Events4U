@@ -20,5 +20,15 @@ public class EquipmentServiceImpl implements EquipmentService {
 	public List<Equipment> getAllEquipments() {
 		return equipmentDao.getAllEquipments();
 	}
+	@Override
+	public List<String> getAllEquipmentNames() {
+		// TODO Auto-generated method stub
+		return equipmentDao.getAllEquipmentNames();
+	}
 
+	@Override
+	public String getEquipmentIdFromName(String n) {
+		// TODO Auto-generated method stub
+		return equipmentDao.getEquipmentIdFromName(n);
+	}
 }

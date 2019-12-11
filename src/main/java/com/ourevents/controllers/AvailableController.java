@@ -13,12 +13,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ourevents.model.Available;
+import com.ourevents.model.Required;
+import com.ourevents.model.Event;
 import com.ourevents.service.AvailableService;
+import com.ourevents.service.EventService;
 
 @Controller
 public class AvailableController {
 	@Autowired
 	AvailableService availService;
+	@Autowired
+	EventService eventService;
 
     //show the add avail form and also pass an empty backing bean object to store the form field values
 	@RequestMapping(value = "/addNewAvailable", method = RequestMethod.GET)
@@ -27,14 +32,15 @@ public class AvailableController {
 	}
 
     //Get the form field values which are populated using the backing bean and store it in db
-	@RequestMapping(value = "/addNewAvailable", method = RequestMethod.POST)
-	public ModelAndView processRequest(@ModelAttribute("ava") Available ava) {
-		availService.insertAvailable(ava);
-		List<Available> avails = availService.getAllAvailables();
-		ModelAndView model = new ModelAndView("getAvailables");
-		model.addObject("avails", avails);
+	@RequestMapping(value = "/addNewAvailable/{mid}", method = RequestMethod.POST)
+	public ModelAndView processRequest(@PathVariable("mid") String mid,
+			@ModelAttribute("avai") Available a) {
+		a.setEventId(mid);	
+		availService.insertAvailable(a);
+		List<Event> events = eventService.getAllEvents();
+		ModelAndView model = new ModelAndView("getEvents");
+		model.addObject("events", events);
 		return model;
-
 	}
 	
 

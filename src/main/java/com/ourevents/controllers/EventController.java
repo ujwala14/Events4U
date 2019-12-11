@@ -14,10 +14,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import com.ourevents.model.Event;
+import com.ourevents.model.Participate;
 import com.ourevents.service.CateringService;
 import com.ourevents.service.EventService;
 import com.ourevents.service.PhotographyService;
 import com.ourevents.service.VenueService;
+import com.ourevents.service.ParticipateService;
+import com.ourevents.service.PerformerService;
 
 @Controller
 public class EventController {
@@ -29,6 +32,8 @@ public class EventController {
 	CateringService cateringService;
 	@Autowired
 	PhotographyService photoService;
+	@Autowired
+	PerformerService performerService;
 
     //the welcome page
 	@RequestMapping("/")
@@ -68,13 +73,21 @@ public class EventController {
 		
 		System.out.println(eve);
 		eventService.insertEvent(eve);
-		List<Event> events = eventService.getAllEvents();
-		ModelAndView model = new ModelAndView("getEvents");
-		model.addObject("events", events);
-		return model;
+		return new ModelAndView("redirect:/addNewParticipate/"+ eve.getEventId());
 
 	}
+
 	
+	@RequestMapping(value = "/addNewParticipate/{mid}", method = RequestMethod.GET)
+	public ModelAndView showP(@PathVariable("mid") String mid) {
+		Participate p = new Participate();
+		p.setEvenID(mid);
+		//System.out.println(c);
+		List<String> performers = performerService.getAllPerformerNames();
+		ModelAndView model= new ModelAndView("addParticipate", "part", p);
+		model.addObject("performers", performers);
+		return model;
+	}
 
     //show all events saved in db
 	@RequestMapping("/getEvents")

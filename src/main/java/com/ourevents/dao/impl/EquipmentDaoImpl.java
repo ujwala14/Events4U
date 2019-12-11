@@ -54,4 +54,27 @@ public class EquipmentDaoImpl extends JdbcDaoSupport implements EquipmentDao{
 		return result;
 	}
 	
+	@Override
+	public List<String> getAllEquipmentNames() {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM equipment";
+		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
+		
+		List<String> result = new ArrayList<String>();
+		for(Map<String, Object> row:rows){
+			result.add((String)row.get("equipName"));
+		}
+		
+		return result;
+	}
+	@Override
+	public String getEquipmentIdFromName(String n) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT equipID FROM equipment WHERE equipName = ?";
+
+        return getJdbcTemplate().queryForObject(
+                sql, new Object[]{n}, String.class);
+	}
+	
+	
 }

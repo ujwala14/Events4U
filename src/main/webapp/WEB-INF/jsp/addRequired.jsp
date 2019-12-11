@@ -19,33 +19,29 @@ th, td {
   cursor: pointer;
 }
 </style>
-<title>Add Participant</title>
+<title>Add Required</title>
 </head>
 <jsp:include page="menu2.jsp" />
 <center>
 <body>
-	<h3 style="color: red;">Add Performers</h3>
+	<h3 style="color: red;">Add New Equipment For Event</h3>
 
-	<div id="addParticipate">
-		<form:form action="/addNewParticipate/${part.getEvenID()}" method="post"
-			modelAttribute="part">
+	<div id="addRequired">
+		<form:form action="/addNewRequired/${req.getEvenID()}" method="post"
+			modelAttribute="req">
 			<table>
 			
 			<tr><td><label>Event Id</label></td>
-				<td><label>${part.getEvenID()}</label></tr>
+				<td><label>${req.getEvenID()}</label></tr>
 			
-			<tr><td><label>Select Performer </label></td>
-				<td><form:select path="performID">
-						<form:options items="${performers}" />
+			<tr><td><label>Select Equipment </label></td>
+				<td><form:select path="equipID">
+						<form:options items="${equipments}" />
 					</form:select>
 				</td></tr>
 
-			<tr><td>	<label>Enter Performance Start time </label></td>
-				<td><form:input path="start" value="00:00:00"/>
-				</td></tr>
-
-			<tr><td>	<label>Enter Performance End time </label></td>
-				<td><form:input path="end" value="00:00:00"/>
+			<tr><td>	<label>Enter Quantity Required </label></td>
+				<td><form:input path="quantity_req"/>
 				</td></tr>
 				
 			</table>

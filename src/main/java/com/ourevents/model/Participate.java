@@ -1,10 +1,12 @@
 package com.ourevents.model;
 
+import java.sql.Time;
+
 public class Participate {
 	String evenID;
 	String performID;
-	String start;
-	String end;
+	Time start;
+	Time end;
 	
 	public String getEvenID() {
 		return evenID;
@@ -22,20 +24,30 @@ public class Participate {
 		this.performID = performID;
 	}
 
-	public String getStart() {
+	public Time getStart() {
 		return start;
 	}
 
 	public void setStart(String start) {
+		this.start = Time.valueOf(start);
+	}
+	
+	public void setStart(Time start) {
 		this.start = start;
+		//this.startTime = startTime;
 	}
 
-	public String getEnd() {
+	public Time getEnd() {
 		return end;
 	}
 
 	public void setEnd(String end) {
+		this.end = Time.valueOf(end);
+	}
+	
+	public void setEnd(Time end) {
 		this.end = end;
+		//this.startTime = startTime;
 	}
 
 	@Override

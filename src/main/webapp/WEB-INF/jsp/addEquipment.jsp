@@ -24,7 +24,7 @@ th, td {
 <jsp:include page="menu2.jsp" />
 <body>
 <center>
-	<h3 style="color: red;">Add New Venue</h3>
+	<h3 style="color: red;">Add New Equipment</h3>
 
 	<div id="addEquipment">
 		<form:form action="/addNewEquipment" method="post"
@@ -37,7 +37,7 @@ th, td {
 				<td><form:input path="equipName" /></td></tr>
 				
 			<tr><td>	<label>Enter Quantity Available </label></td>
-				<td><form:input path="quantity_avai" /></td></tr>
+				<td><form:input path="quantity_avai" type="number" min="1"/></td></tr>
 			</table>
 			<br><br>
 			<input type="SUBMIT" class="button" value="Submit"/>

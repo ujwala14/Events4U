@@ -27,5 +27,11 @@ public class EventServiceImpl implements EventService {
 		return eventDao.getEventById(n);
 	}
 
+	@Override
+	public List<Event> getAllOldEvents() {
+		// TODO Auto-generated method stub
+		return eventDao.getAllOldEvents();
+	}
+
 
 }

@@ -20,6 +20,18 @@ table#t01 th {
   background-color: black;
   color: white;
 }
+.button {
+  background-color: #e01d5b;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 </style>
 </head>
 <jsp:include page="menu2.jsp" />
@@ -27,11 +39,12 @@ table#t01 th {
 <body>
 	
 	<h3 style="color: red;">Show All Events</h3>
+	<a href="/getEvents" class="button">New</a> 
+	<a href="/getOldEvents" class="button">Old</a>
+	<br><br>
+	
 	<table id ="t01" style = 'width:50%'>
-<!-- 	<tr><th>Name</th> <th>Type</th> <th>Date</th>
-		<th>StartTime</th> <th>EndTime</th> <th>Desc</th> <th>Venue</th> 
-		<th>Catering</th><th>Photography</th></tr>
--->
+
 		<c:forEach var="listValue" items="${events}">
 			<tr><td>
 			<h3> ${listValue.getEventName()}</h3>
@@ -43,18 +56,7 @@ table#t01 th {
 			<a href="/getEventMore/${listValue.getEventId()}">See more details</a>
 			
 			</td>
-			<!-- <td></td>
-			<td></td>
-			<td></td> <td>${listValue.getVenId()}</td>
-			<td>${listValue.getCaterId()}</td><td>${listValue.getPhotoId()}</td> 
-			-->
-	<!-- 		<td>
-					<a href="/getCast/${listValue.getEventId()}">See Cast</a>		
-			</td>
-			<td>
-					<a href="/getDirect/${listValue.getEventId()}">See Director(s)</a>	
-			</td>
-		-->	
+			
 			</tr>
 		</c:forEach>
 	</table>

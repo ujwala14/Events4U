@@ -6,5 +6,6 @@ import com.ourevents.model.Venue;
 public interface EventDao {
 	void insertEvent(Event e);
 	List<Event> getAllEvents();
+	List<Event> getAllOldEvents();
 	Event getEventById(String n);
 }

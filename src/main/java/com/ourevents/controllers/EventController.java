@@ -102,6 +102,14 @@ public class EventController {
 		model.addObject("events", events);
 		return model;
 	}
+	
+	@RequestMapping("/getOldEvents")
+	public ModelAndView getOldEvents() {
+		List<Event> events = eventService.getAllOldEvents();
+		ModelAndView model = new ModelAndView("getEvents");
+		model.addObject("events", events);
+		return model;
+	}
 
 	@RequestMapping("/getEventMore/{n}")
 	public ModelAndView getEventByName(@PathVariable("n") String n) {

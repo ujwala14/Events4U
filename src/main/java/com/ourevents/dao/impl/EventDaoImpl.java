@@ -43,7 +43,9 @@ public class EventDaoImpl extends JdbcDaoSupport implements EventDao{
 	}
 	
 	public List<Event> getAllEvents(){
-		String sql = "SELECT * FROM event";
+		String sql = "SELECT * FROM event Where date > CURRENT_DATE or "
+				+ "(date = CURRENT_DATE and startTime > CURRENT_TIME) "
+				+ "ORDER BY date,startTime,endTime";
 		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 		
 		List<Event> result = new ArrayList<Event>();
@@ -67,6 +69,35 @@ public class EventDaoImpl extends JdbcDaoSupport implements EventDao{
 		return result;
 	}
 
+	@Override
+	public List<Event> getAllOldEvents() {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM event Where date < CURRENT_DATE or "
+				+ "(date = CURRENT_DATE and endTime < CURRENT_TIME) "
+				+ "ORDER BY date DESC,endTime DESC,startTime DESC";
+		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
+		
+		List<Event> result = new ArrayList<Event>();
+		for(Map<String, Object> row:rows){
+			Event e = new Event();
+			e.setEventId((String)row.get("eventId"));
+			e.setEventName((String)row.get("eventName"));
+			e.setEventType((String)row.get("eventType"));
+			e.setDate((Date)row.get("date"));
+			e.setStartTime((Time)row.get("startTime"));
+			e.setEndTime((Time)row.get("endTime"));
+			e.setDescription((String)row.get("description"));
+			e.setVenId((String)row.get("venId"));
+			e.setCaterId((String)row.get("caterId"));
+			e.setPhotoId((String)row.get("photoId"));
+			
+			System.out.println(e);
+			result.add(e);
+		}
+		
+		return result;
+	}
+	
 	@Override
 	public Event getEventById(String n) {
 		// TODO Auto-generated method stub
@@ -94,9 +125,7 @@ public class EventDaoImpl extends JdbcDaoSupport implements EventDao{
 			return event;
 		}catch(Exception e) {
 			return null;
+		}
 	}
-	}
-	
-
 
 }

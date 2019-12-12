@@ -45,8 +45,8 @@ public class RequiredDaoImpl extends JdbcDaoSupport implements RequiredDao{
 		List<Required> result = new ArrayList<Required>();
 		for(Map<String, Object> row:rows){
 			Required req = new Required();
-			req.setEvenID((String)row.get("eventIDR"));
-			req.setEquipID((String)row.get("equipIDR"));
+			req.setEvenID((String)row.get("evenID"));
+			req.setEquipID((String)row.get("equipID"));
 			req.setQuantity_req((int)row.get("quantity_req"));
 //			System.out.println(act);
 			result.add(req);

@@ -31,9 +31,9 @@ public class EquipmentDaoImpl extends JdbcDaoSupport implements EquipmentDao{
 	}
 	 @Override
 	public void insertEquipment(Equipment equ) {
-		String sql = "INSERT INTO equipment VALUES (?,?,?)" ;
+		String sql = "INSERT INTO equipment VALUES (?,?)" ;
 		getJdbcTemplate().update(sql, new Object[]{
-				equ.getEquipID(),equ.getEquipName() ,equ.getQuantity_avai()
+				equ.getEquipID(),equ.getEquipName()
 		});
 	}
 	
@@ -46,7 +46,6 @@ public class EquipmentDaoImpl extends JdbcDaoSupport implements EquipmentDao{
 			Equipment equ = new Equipment();
 			equ.setEquipID((String)row.get("equipID"));
 			equ.setEquipName((String)row.get("equipName"));
-			equ.setQuantity_avai((int)row.get("quantity_avai"));
 //			System.out.println(act);
 			result.add(equ);
 		}

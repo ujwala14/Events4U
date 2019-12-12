@@ -1,4 +1,7 @@
 package com.ourevents.service.impl;
+import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +36,25 @@ public class EventServiceImpl implements EventService {
 		return eventDao.getAllOldEvents();
 	}
 
-
+	@Override
+	public boolean checkClash(Date d,String v, Time s, Time e) {
+		// TODO Auto-generated method stub
+		LocalTime newstart = s.toLocalTime();
+		LocalTime newend = e.toLocalTime();
+		
+		List<Event> events = getAllEvents();
+		
+		for(int i=0 ; i<events.size() ; i++) {
+			
+			if(events.get(i).getDate().compareTo(d)==0 && events.get(i).getVenId().equals(v)) {
+				LocalTime oldstart = events.get(i).getStartTime().toLocalTime();
+				LocalTime oldend = events.get(i).getEndTime().toLocalTime();
+				if(newstart.compareTo(oldstart) > 0 && newstart.compareTo(oldend) < 0) 
+					return false;
+				else if(newend.compareTo(oldstart) > 0 && newend.compareTo(oldend) < 0)
+					return false;
+			}
+		}
+			return true;
+	}
 }

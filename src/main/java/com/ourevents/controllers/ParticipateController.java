@@ -43,7 +43,10 @@ public class ParticipateController {
 			@ModelAttribute("part") Participate p) {
 		p.setEvenID(mid);	
 		String aid = p.getPerformID();	//actor name actually
-		p.setPerformID(performService.getPerformerIdFromName(aid));
+		if(aid.equals("None"))
+			p.setPerformID("None");
+		else
+			p.setPerformID(performService.getPerformerIdFromName(aid));
 		participateService.insertParticipate(p);
 		return new ModelAndView("redirect:/addNewParticipate/"+mid);
 	}
@@ -53,7 +56,10 @@ public class ParticipateController {
 			@ModelAttribute("part") Participate p) {
 		p.setEvenID(mid);	
 		String aid = p.getPerformID();	//actor name actually
-		p.setPerformID(performService.getPerformerIdFromName(aid));
+		if(aid.equals("None"))
+			p.setPerformID("None");
+		else
+			p.setPerformID(performService.getPerformerIdFromName(aid));
 		participateService.insertParticipate(p);
 		return new ModelAndView("redirect:/addNewRequired/"+ p.getEvenID());
 	}

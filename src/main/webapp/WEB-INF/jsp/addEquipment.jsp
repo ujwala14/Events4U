@@ -35,9 +35,6 @@ th, td {
 			
 			<tr><td>	<label>Enter Equipment Name </label></td>
 				<td><form:input path="equipName" /></td></tr>
-				
-			<tr><td>	<label>Enter Quantity Available </label></td>
-				<td><form:input path="quantity_avai" type="number" min="1"/></td></tr>
 			</table>
 			<br><br>
 			<input type="SUBMIT" class="button" value="Submit"/>

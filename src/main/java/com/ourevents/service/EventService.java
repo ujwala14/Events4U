@@ -1,4 +1,6 @@
 package com.ourevents.service;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 
 import com.ourevents.model.Event;
@@ -8,4 +10,5 @@ public interface EventService {
 	List<Event> getAllEvents();
 	Event getEventById(String n);
 	List<Event> getAllOldEvents();
+	boolean checkClash(Date d,String v,Time s,Time e);
 }

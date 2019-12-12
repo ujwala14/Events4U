@@ -6,4 +6,5 @@ import com.ourevents.model.Participate;
 public interface ParticipateService {
 	void insertParticipate(Participate part);
 	List<Participate> getAllParticipates();
+	List<Participate> getPartByEvent(String mid);
 }

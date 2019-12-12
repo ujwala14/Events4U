@@ -25,4 +25,10 @@ public class AvailableServiceImpl implements AvailableService {
 		return availDao.getAllAvailables();
 	}
 
+	@Override
+	public Available getAvailableById(String n) {
+		// TODO Auto-generated method stub
+		return availDao.getAvailableById(n);
+	}
+
 }

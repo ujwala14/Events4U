@@ -17,6 +17,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ourevents.dao.PhotographyDao;
 import com.ourevents.model.Photography;
+import com.ourevents.model.Photography;
 
 
 @Repository
@@ -73,6 +74,28 @@ public class PhotographyDaoImpl extends JdbcDaoSupport implements PhotographyDao
 
         return getJdbcTemplate().queryForObject(
                 sql, new Object[]{n}, String.class);
+	}
+	@Override
+	public Photography getPhotographyById(String n) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM photography where phoID= ?";
+		try {
+			Photography photo = (Photography)getJdbcTemplate().queryForObject(sql, new Object[]{n}, 
+					new RowMapper<Photography>(){
+				@Override
+				public Photography mapRow(ResultSet rs, int rwNumber) throws SQLException {
+					Photography pho = new Photography();
+					pho.setPhoID((String)rs.getString("phoID"));
+					pho.setPhoName((String)rs.getString("phoName"));
+					pho.setPhoContNo((String)rs.getString("phoContNo"));
+//					System.out.println(act);
+					return pho;
+				}
+			});	
+			return photo;
+		}catch(Exception e) {
+			return null;
+		}
 	}
 	
 }

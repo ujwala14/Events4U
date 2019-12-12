@@ -8,4 +8,5 @@ public interface CateringService {
 	List<Catering> getAllCaterings();
 	List<String> getAllCateringNames();
 	String getCateringIdFromName(String n);
+	Catering getCateringById(String n);
 }

@@ -21,4 +21,10 @@ public class ParticipateServiceImpl implements ParticipateService {
 		return participateDao.getAllParticipates();
 	}
 
+	@Override
+	public List<Participate> getPartByEvent(String mid) {
+		// TODO Auto-generated method stub
+		return participateDao.getPartByEvent(mid);
+	}
+
 }

@@ -17,6 +17,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ourevents.dao.CateringDao;
 import com.ourevents.model.Catering;
+import com.ourevents.model.Catering;
 
 
 @Repository
@@ -73,6 +74,27 @@ public class CateringDaoImpl extends JdbcDaoSupport implements CateringDao{
 
         return getJdbcTemplate().queryForObject(
                 sql, new Object[]{n}, String.class);
+	}
+	@Override
+	public Catering getCateringById(String n) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM catering where catID= ?";
+		try {
+			Catering cater = (Catering)getJdbcTemplate().queryForObject(sql, new Object[]{n}, 
+					new RowMapper<Catering>(){
+				@Override
+				public Catering mapRow(ResultSet rs, int rwNumber) throws SQLException {
+					Catering cat = new Catering();
+					cat.setCatID((String)rs.getString("catID"));
+					cat.setCatName((String)rs.getString("catName"));
+					cat.setCatContNo((String)rs.getString("catContNo"));
+					return cat;
+				}
+			});	
+			return cater;
+		}catch(Exception e) {
+			return null;
+	}
 	}
 	
 }

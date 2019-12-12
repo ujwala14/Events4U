@@ -78,4 +78,11 @@ public class ParticipateController {
 		return model;
 	}
 
+	@RequestMapping("/getParticipate/{mid}")
+	public ModelAndView getCastByMovie(@PathVariable("mid") String mid) {
+		List<Participate> part = participateService.getPartByEvent(mid);
+		ModelAndView model = new ModelAndView("getParticipateById");
+		model.addObject("part", part);
+		return model;
+	}
 }

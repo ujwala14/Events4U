@@ -103,5 +103,12 @@ public class EventController {
 		return model;
 	}
 
+	@RequestMapping("/getEventMore/{n}")
+	public ModelAndView getEventByName(@PathVariable("n") String n) {
+		Event event = eventService.getEventById(n);
+		ModelAndView model = new ModelAndView("getEventMore");
+		model.addObject("event", event);
+		return model;
+	}
 
 }

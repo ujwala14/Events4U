@@ -8,4 +8,5 @@ public interface PhotographyService {
 	List<Photography> getAllPhotographys();
 	List<String> getAllPhoNames();
 	String getPhoIdFromName(String n);
+	Photography getPhotographyById(String n);
 }

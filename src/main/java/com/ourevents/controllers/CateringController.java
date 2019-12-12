@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ourevents.model.Catering;
 import com.ourevents.model.Catering;
 import com.ourevents.service.CateringService;
 
@@ -44,4 +46,11 @@ public class CateringController {
 		return model;
 	}
 
+	@RequestMapping("/getCatering/{n}")
+	public ModelAndView getEventByName(@PathVariable("n") String n) {
+		Catering catering = cateringService.getCateringById(n);
+		ModelAndView model = new ModelAndView("getCateringById");
+		model.addObject("catering", catering);
+		return model;
+	}
 }

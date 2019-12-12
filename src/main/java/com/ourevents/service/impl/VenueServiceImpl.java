@@ -33,4 +33,10 @@ public class VenueServiceImpl implements VenueService {
 		return venueDao.getVenueIdFromName(n);
 	}
 
+	@Override
+	public Venue getVenueById(String n) {
+		// TODO Auto-generated method stub
+		return venueDao.getVenueById(n);
+	}
+
 }

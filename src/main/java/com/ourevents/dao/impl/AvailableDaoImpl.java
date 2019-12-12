@@ -17,6 +17,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ourevents.dao.AvailableDao;
 import com.ourevents.model.Available;
+import com.ourevents.model.Available;
 
 
 @Repository
@@ -51,6 +52,26 @@ public class AvailableDaoImpl extends JdbcDaoSupport implements AvailableDao{
 		}
 		
 		return result;
+	}
+	@Override
+	public Available getAvailableById(String n) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM available where eventId= ?";
+		try {
+			Available avail = (Available)getJdbcTemplate().queryForObject(sql, new Object[]{n}, 
+					new RowMapper<Available>(){
+				@Override
+				public Available mapRow(ResultSet rs, int rwNumber) throws SQLException {
+					Available v = new Available();
+					v.setEventId((String)rs.getString("eventId"));
+					v.setAvailSeats((int)rs.getInt("availSeats"));
+					return v;
+				}
+			});	
+			return avail;
+		}catch(Exception e) {
+			return null;
+		}
 	}
 	
 }

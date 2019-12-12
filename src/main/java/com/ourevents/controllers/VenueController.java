@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -44,6 +45,13 @@ public class VenueController {
 		return model;
 	}
 
+	@RequestMapping("/getVenue/{n}")
+	public ModelAndView getEventByName(@PathVariable("n") String n) {
+		Venue venue = venueService.getVenueById(n);
+		ModelAndView model = new ModelAndView("getVenueById");
+		model.addObject("venue", venue);
+		return model;
+	}
 
 }
 

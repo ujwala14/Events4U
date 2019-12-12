@@ -21,5 +21,11 @@ public class EventServiceImpl implements EventService {
 		return eventDao.getAllEvents();
 	}
 
+	@Override
+	public Event getEventById(String n) {
+		// TODO Auto-generated method stub
+		return eventDao.getEventById(n);
+	}
+
 
 }

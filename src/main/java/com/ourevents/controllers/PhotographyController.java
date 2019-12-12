@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ourevents.model.Photography;
 import com.ourevents.model.Photography;
 import com.ourevents.service.PhotographyService;
 
@@ -41,6 +43,14 @@ public class PhotographyController {
 		List<Photography> photographys = photographyService.getAllPhotographys();
 		ModelAndView model = new ModelAndView("getPhotographys");
 		model.addObject("photographys", photographys);
+		return model;
+	}
+	
+	@RequestMapping("/getPhotography/{n}")
+	public ModelAndView getEventByName(@PathVariable("n") String n) {
+		Photography photography = photographyService.getPhotographyById(n);
+		ModelAndView model = new ModelAndView("getPhotographyById");
+		model.addObject("photography", photography);
 		return model;
 	}
 

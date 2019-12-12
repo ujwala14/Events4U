@@ -20,4 +20,10 @@ public class RequiredServiceImpl implements RequiredService {
 	public List<Required> getAllRequireds() {
 		return requiredDao.getAllRequireds();
 	}
+
+	@Override
+	public List<Required> getReqByEvent(String mid) {
+		// TODO Auto-generated method stub
+		return requiredDao.getReqByEvent(mid);
+	}
 }

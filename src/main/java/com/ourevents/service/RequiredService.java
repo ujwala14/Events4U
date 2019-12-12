@@ -7,4 +7,5 @@ import com.ourevents.model.Required;
 public interface RequiredService {
 	void insertRequired(Required requ);
 	List<Required> getAllRequireds();
+	List<Required> getReqByEvent(String mid);
 }

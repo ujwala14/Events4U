@@ -33,4 +33,10 @@ public class CateringServiceImpl implements CateringService {
 		return cateringDao.getCateringIdFromName(n);
 	}
 
+	@Override
+	public Catering getCateringById(String n) {
+		// TODO Auto-generated method stub
+		return cateringDao.getCateringById(n);
+	}
+
 }

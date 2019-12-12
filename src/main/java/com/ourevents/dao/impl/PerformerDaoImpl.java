@@ -17,6 +17,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ourevents.dao.PerformerDao;
 import com.ourevents.model.Performer;
+import com.ourevents.model.Required;
 
 
 @Repository
@@ -78,5 +79,6 @@ public class PerformerDaoImpl extends JdbcDaoSupport implements PerformerDao{
         return getJdbcTemplate().queryForObject(
                 sql, new Object[]{n}, String.class);
 	}
+	
 	
 }

@@ -33,4 +33,10 @@ public class PhotographyServiceImpl implements PhotographyService {
 		return photographyDao.getPhoIdFromName(n);
 	}
 
+	@Override
+	public Photography getPhotographyById(String n) {
+		// TODO Auto-generated method stub
+		return photographyDao.getPhotographyById(n);
+	}
+
 }

@@ -20,6 +20,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ourevents.dao.EventDao;
 import com.ourevents.model.Event;
+import com.ourevents.model.Event;
 
 @Repository
 public class EventDaoImpl extends JdbcDaoSupport implements EventDao{
@@ -64,6 +65,36 @@ public class EventDaoImpl extends JdbcDaoSupport implements EventDao{
 		}
 		
 		return result;
+	}
+
+	@Override
+	public Event getEventById(String n) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM event where eventId= ?";
+		try {
+			Event event = (Event)getJdbcTemplate().queryForObject(sql, new Object[]{n}, 
+					new RowMapper<Event>(){
+				@Override
+				public Event mapRow(ResultSet rs, int rwNumber) throws SQLException {
+					Event e = new Event();
+					e.setEventId((String)rs.getString("eventId"));
+					e.setEventName((String)rs.getString("eventName"));
+					e.setEventType((String)rs.getString("eventType"));
+					e.setDate((Date)rs.getDate("date"));
+					e.setStartTime((Time)rs.getTime("startTime"));
+					e.setEndTime((Time)rs.getTime("endTime"));
+					e.setDescription((String)rs.getString("description"));
+					e.setVenId((String)rs.getString("venId"));
+					e.setCaterId((String)rs.getString("caterId"));
+					e.setPhotoId((String)rs.getString("photoId"));
+					
+					return e;
+				}
+			});	
+			return event;
+		}catch(Exception e) {
+			return null;
+	}
 	}
 	
 

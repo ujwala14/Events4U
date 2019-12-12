@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ourevents.model.Available;
 import com.ourevents.model.Required;
+import com.ourevents.model.Available;
 import com.ourevents.model.Event;
 import com.ourevents.service.AvailableService;
 import com.ourevents.service.EventService;
@@ -50,6 +51,14 @@ public class AvailableController {
 		List<Available> avails = availService.getAllAvailables();
 		ModelAndView model = new ModelAndView("getAvailables");
 		model.addObject("avails", avails);
+		return model;
+	}
+	
+	@RequestMapping("/getAvailable/{n}")
+	public ModelAndView getEventByName(@PathVariable("n") String n) {
+		Available avail = availService.getAvailableById(n);
+		ModelAndView model = new ModelAndView("getAvailableById");
+		model.addObject("avail", avail);
 		return model;
 	}
 

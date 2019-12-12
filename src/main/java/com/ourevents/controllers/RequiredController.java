@@ -69,4 +69,11 @@ public class RequiredController {
 		return model;
 	}
 
+	@RequestMapping("/getRequired/{mid}")
+	public ModelAndView getCastByMovie(@PathVariable("mid") String mid) {
+		List<Required> reqs = requiredService.getReqByEvent(mid);
+		ModelAndView model = new ModelAndView("getRequiredById");
+		model.addObject("reqs", reqs);
+		return model;
+	}
 }

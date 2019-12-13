@@ -41,6 +41,7 @@ th, td {
 						<form:option value="Concert" label="Concert"/>
 						<form:option value="Conference" label="Conference" />
 						<form:option value="Dance" label="Dance"/>
+						<form:option value="StandUp Comedy" label="StandUp Comedy"/>
 						<form:option value="Indoor Game" label="Indoor Game"/>
 						<form:option value="Outdoor Game" label="Outdoor Game"/>
 						<form:option value="Plays" label="Plays"/>

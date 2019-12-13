@@ -30,11 +30,10 @@ table#t01 th {
 <body>
 	
 	<h3 style="color: red;">Show All Equipments</h3>
-	<table id ="t01" style = 'width:80%'>
-		<tr> <th>Equipment Name</th> <th>Available Quantity</th> </tr>
+	<table id ="t01" style = 'width:20%'>
+		<tr> <th>Equipment Name</th>
 		<c:forEach var="listValue" items="${equipments}">
 			<tr><td>${listValue.getEquipName()}</td>
-			<td>${listValue.getQuantity_avai()}</td> 
 			</tr>
 		</c:forEach>
 	</table>

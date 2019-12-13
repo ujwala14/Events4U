@@ -37,6 +37,7 @@ th, td {
 			<tr><td><label>Select Performer </label></td>
 				<td><form:select path="performID">
 						<form:options items="${performers}" />
+						<form:option value="None" label="None"/>
 					</form:select>
 				</td></tr>
 

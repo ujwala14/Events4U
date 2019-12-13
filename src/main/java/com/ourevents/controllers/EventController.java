@@ -82,8 +82,17 @@ public class EventController {
 			eve.setPhotoId(photoService.getPhoIdFromName(pn));
 		
 		System.out.println(eve);
-		eventService.insertEvent(eve);
-		return new ModelAndView("redirect:/addNewParticipate/"+ eve.getEventId());
+		if(eventService.checkClash(eve.getDate(), eve.getVenId(), eve.getStartTime(), eve.getEndTime())) {
+			eventService.insertEvent(eve);
+			return new ModelAndView("redirect:/addNewParticipate/"+ eve.getEventId());
+		}
+		else {
+			String msg = "Your Event is clashing with another Scheduled event!!!";
+			ModelAndView model = new ModelAndView("error");
+			model.addObject("errmsg",msg);
+			return model;
+			
+		}
 
 	}
 

@@ -21,7 +21,7 @@ th, td {
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfkucUoA0f0GqGAu54hFudhlht41jkxlIwJxRbCzdCMWco0Cu_&s");
+  background-image: url("https://www.scarletevents.com/media/images/blog-cover/big/1514653619_1_6761bd59acb918c34835da9c6ff46217_3.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   
@@ -29,10 +29,9 @@ body {
 </style>
 <title>Add Event</title>
 </head>
+<jsp:include page="menu3.jsp" />
 <center>
 <body>
-<br><br><br><h1 style="color: white;"> Something went wrong!!! </h1><br><br>
-<br><br><br><h1 style="color: white;"> ${errmsg} </h1><br><br>
-<a href="/">Go Back</a>
+<br><br><br><h1 style="color: green;"> Thank You For Booking!!! </h1><br><br>
 </center></body>
 </html>

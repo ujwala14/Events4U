@@ -40,7 +40,7 @@ public class BookController {
 		boo.setUserEmail(uid);
 		availService.reduceSeats(eid, boo.getNoSeats());
 		bookService.insertBook(boo);
-		return new ModelAndView("welcomeUser");
+		return new ModelAndView("thankYou");
 
 	}
 	

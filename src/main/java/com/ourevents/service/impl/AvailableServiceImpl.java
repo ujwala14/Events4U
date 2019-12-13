@@ -31,4 +31,10 @@ public class AvailableServiceImpl implements AvailableService {
 		return availDao.getAvailableById(n);
 	}
 
+	@Override
+	public void reduceSeats(String eid, int seats) {
+		// TODO Auto-generated method stub
+		availDao.reduceSeats(eid, seats);
+	}
+
 }

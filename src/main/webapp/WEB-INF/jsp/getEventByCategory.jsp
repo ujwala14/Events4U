@@ -71,7 +71,7 @@ table#t01 th {
 		</c:forEach>
 	</table>
 	<br><br><br><br><br>
-	<c:set var="email" value="${u.getEmail()}" scope="session" />
+	<c:set var="email" value="<%=em%>" scope="session" />
 </body>
 </center>
 </html>

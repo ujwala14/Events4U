@@ -1,4 +1,5 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -24,6 +25,7 @@ th, td {
 <jsp:include page="menu3.jsp" />
 <center>
 <body>
+	<%String em = (String)session.getAttribute("email");%>
 	<h3 style="color: red;">Filtering</h3>
 
 	<div id="filterUserEvents">
@@ -48,6 +50,7 @@ th, td {
 			<input type="SUBMIT" class="button" value="SUBMIT"/>
 		</form:form>
 	</div>
+	<c:set var="email" value="<%=em%>" scope="session" />
 </body>
 </center>
 </html>

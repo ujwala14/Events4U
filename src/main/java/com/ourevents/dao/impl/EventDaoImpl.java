@@ -197,7 +197,9 @@ public class EventDaoImpl extends JdbcDaoSupport implements EventDao{
 		// TODO Auto-generated method stub
 			// TODO Auto-generated method stub
 		System.out.println(n);
-			String sql = "SELECT * FROM event where eventType = '"+n+"'";
+			String sql = "SELECT * FROM event Where (date > CURRENT_DATE or "
+					+ "(date = CURRENT_DATE and startTime > CURRENT_TIME)) and eventType = '"+n+"'"
+					+ " ORDER BY date,startTime,endTime";
 				List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 				
 				List<Event> result = new ArrayList<Event>();

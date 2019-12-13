@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -27,7 +28,7 @@ th, td {
 <center>
 <body>
 	<h3 style="color: red;">Book Seats</h3>
-
+	<%String em = (String)session.getAttribute("email");%>
 	<div id="book">
 		<form:form action="/book/${boo.getUserEmail()}/${boo.getEventId()}" method="post"
 			modelAttribute="boo">
@@ -42,6 +43,7 @@ th, td {
 			<input type="SUBMIT" class="button" value="SUBMIT"/>
 		</form:form>
 	</div>
+	<c:set var="email" value="<%=em%>" scope="session" />
 </body>
 </center>
 </html>

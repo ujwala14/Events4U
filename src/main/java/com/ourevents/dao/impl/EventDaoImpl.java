@@ -128,4 +128,67 @@ public class EventDaoImpl extends JdbcDaoSupport implements EventDao{
 		}
 	}
 
+	@Override
+	public List<Event> getEventsForUser(String uid) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM event e,book b Where "
+				+ "(date > CURRENT_DATE or (date = CURRENT_DATE and startTime > CURRENT_TIME))"
+				+ " and e.eventId = b.eventId and b.userEmail = '"+ uid
+						+ "' ORDER BY date,startTime,endTime";
+		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
+		
+		List<Event> result = new ArrayList<Event>();
+		for(Map<String, Object> row:rows){
+			Event e = new Event();
+			e.setEventId((String)row.get("eventId"));
+			e.setEventName((String)row.get("eventName"));
+			e.setEventType((String)row.get("eventType"));
+			e.setDate((Date)row.get("date"));
+			e.setStartTime((Time)row.get("startTime"));
+			e.setEndTime((Time)row.get("endTime"));
+			e.setDescription((String)row.get("description"));
+			e.setVenId((String)row.get("venId"));
+			
+			//no. of seats:)
+			e.setCaterId(String.valueOf(row.get("noSeats")));
+			e.setPhotoId((String)row.get("photoId"));
+			
+			System.out.println(e);
+			result.add(e);
+		}
+		
+		return result;
+	}
+
+	@Override
+	public List<Event> getOldEventsForUser(String uid) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM event e,book b Where "
+				+ "(date < CURRENT_DATE or (date = CURRENT_DATE and endTime < CURRENT_TIME))"
+				+ " and e.eventId = b.eventId and b.userEmail = '"+ uid
+						+ "' ORDER BY date DESC,endTime DESC ,startTime DESC";
+		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
+		
+		List<Event> result = new ArrayList<Event>();
+		for(Map<String, Object> row:rows){
+			Event e = new Event();
+			e.setEventId((String)row.get("eventId"));
+			e.setEventName((String)row.get("eventName"));
+			e.setEventType((String)row.get("eventType"));
+			e.setDate((Date)row.get("date"));
+			e.setStartTime((Time)row.get("startTime"));
+			e.setEndTime((Time)row.get("endTime"));
+			e.setDescription((String)row.get("description"));
+			e.setVenId((String)row.get("venId"));
+			
+			//e.setPhotoId((String)row.get("photoId"));
+			//no of seats also there
+			e.setCaterId(String.valueOf(row.get("noSeats")));
+			System.out.println(e);
+			result.add(e);
+		}
+		
+		return result;
+	}
+
 }

@@ -1,9 +1,10 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <html>
 <head>
-<title>Show Events</title>
+<title>Booked Events</title>
 <style>
 table, th, td {
   border: 1px solid black;
@@ -53,7 +54,7 @@ table#t01 th {
 <center>
 <body>
 	<%String em = (String)session.getAttribute("email");%>
-	<h3 style="color: red;">Show All Events</h3>
+	<h3 style="color: red;">Show All Booked Events</h3>
 	
 	<table id ="t01" style = 'width:50%'>
 
@@ -64,8 +65,7 @@ table#t01 th {
 			<pre>${listValue.getEventType()} - ${listValue.getDescription()}</pre>
 			<jsp:include page="/getVenue/${listValue.getVenId()}" />
 			<jsp:include page="/getParticipate/${listValue.getEventId()}" />
-			<jsp:include page="/getAvailable/${listValue.getEventId()}" />
-			<a href="/book/<%=em%>/${listValue.getEventId()}" class="button2">Book</a> 
+			<pre>No. of seats booked : ${listValue.getCaterId()}</pre>
 			
 			</td>
 			

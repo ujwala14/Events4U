@@ -8,4 +8,6 @@ public interface EventDao {
 	List<Event> getAllEvents();
 	List<Event> getAllOldEvents();
 	Event getEventById(String n);
+	List<Event> getEventsForUser(String uid);
+	List<Event> getOldEventsForUser(String uid);
 }

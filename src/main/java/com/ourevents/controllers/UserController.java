@@ -35,7 +35,10 @@ public class UserController {
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ModelAndView processRequest(@ModelAttribute("u") User u) {
 		userService.insertUser(u);
-		return new ModelAndView("redirect:/");
+		ModelAndView model= new ModelAndView("redirect:/welcomeUser/"+u.getEmail());
+		System.out.println(u);
+		//model.addObject("u",user);
+		return model;
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)

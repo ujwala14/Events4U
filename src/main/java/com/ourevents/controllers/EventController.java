@@ -134,6 +134,27 @@ public class EventController {
 			return model;
 		}
 
+		@RequestMapping("/user/{uid}/booked")
+		public ModelAndView getUserEventsBooked(@PathVariable("uid") String uid) {
+			List<Event> events = eventService.getEventsForUser(uid);
+			User u = new User();
+			u.setEmail(uid);
+			ModelAndView model = new ModelAndView("bookedEvents");
+			model.addObject("events", events);
+			model.addObject("uid", u);
+			return model;
+		}
+		@RequestMapping("/user/{uid}/attended")
+		public ModelAndView getUserEventsAttended(@PathVariable("uid") String uid) {
+			List<Event> events = eventService.getOldEventsForUser(uid);
+			User u = new User();
+			u.setEmail(uid);
+			ModelAndView model = new ModelAndView("attendedEvents");
+			model.addObject("events", events);
+			model.addObject("uid", u);
+			return model;
+		}
+		
 	@RequestMapping("/getEventMore/{n}")
 	public ModelAndView getEventByName(@PathVariable("n") String n) {
 		Event event = eventService.getEventById(n);

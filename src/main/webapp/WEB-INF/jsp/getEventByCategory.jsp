@@ -63,7 +63,7 @@ table#t01 th {
 			<jsp:include page="/getVenue/${listValue.getVenId()}" />
 			<jsp:include page="/getParticipate/${listValue.getEventId()}" />
 			<jsp:include page="/getAvailable/${listValue.getEventId()}" />
-			<a href="/book/<%=em%>/${listValue.getEventId()}" class="button2">Book</a> 
+			
 			
 			</td>
 			

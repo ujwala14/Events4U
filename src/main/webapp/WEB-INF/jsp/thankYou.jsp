@@ -1,4 +1,5 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -32,6 +33,8 @@ body {
 <jsp:include page="menu3.jsp" />
 <center>
 <body>
+<%String em = (String)session.getAttribute("email");%>
 <br><br><br><h1 style="color: green;"> Thank You For Booking!!! </h1><br><br>
+<c:set var="email" value="<%=em%>" scope="session" />
 </center></body>
 </html>

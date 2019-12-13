@@ -45,7 +45,10 @@ public class UserController {
 			User user = userService.getUserAfterLogin(email, pwd);
 			if(user != null)
 			{
-				return new ModelAndView("redirect:/");
+				ModelAndView model= new ModelAndView("redirect:/welcomeUser/"+email);
+				System.out.println(user);
+				model.addObject("u",user);
+				return model;
 			}
 			else
 				return new ModelAndView("redirect:/login");

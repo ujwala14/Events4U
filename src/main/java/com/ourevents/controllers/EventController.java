@@ -46,6 +46,11 @@ public class EventController {
 		return new ModelAndView("welcomeAdmin");
 	}
 	
+	@RequestMapping("/welcomeUser/{uid}")
+	public ModelAndView firstPageUser(@PathVariable("uid") String uid) {
+		return new ModelAndView("welcomeUser");
+	}
+	
     //show the add event form and also pass an empty backing bean object to store the form field values
 	@RequestMapping(value = "/addNewEvent", method = RequestMethod.GET)
 	public ModelAndView show() {
@@ -110,6 +115,15 @@ public class EventController {
 		model.addObject("events", events);
 		return model;
 	}
+	
+	//show all events saved in db
+		@RequestMapping("/getUserEvents")
+		public ModelAndView getUserEvents() {
+			List<Event> events = eventService.getAllEvents();
+			ModelAndView model = new ModelAndView("getUserEvents");
+			model.addObject("events", events);
+			return model;
+		}
 
 	@RequestMapping("/getEventMore/{n}")
 	public ModelAndView getEventByName(@PathVariable("n") String n) {

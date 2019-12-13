@@ -1,6 +1,12 @@
 package com.ourevents.model;
 
 public class User {
+	@Override
+	public String toString() {
+		return "User [userName=" + userName + ", phoneNo=" + 
+				phoneNo + ", email=" + email + ", pwd=" + pwd + ", age="
+				+ age + "]";
+	}
 	String userName,phoneNo,email,pwd;
 	int age;
 	

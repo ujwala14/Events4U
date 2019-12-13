@@ -10,13 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ourevents.model.Available;
 import com.ourevents.model.Book;
+import com.ourevents.service.AvailableService;
 import com.ourevents.service.BookService;
 
 @Controller
 public class BookController {
 	@Autowired
 	BookService bookService;
+	@Autowired
+	AvailableService availService;
 
     //show the add book form and also pass an empty backing bean object to store the form field values
 	@RequestMapping(value = "/book/{uid}/{eid}", method = RequestMethod.GET)
@@ -34,6 +38,7 @@ public class BookController {
 			@PathVariable("eid") String eid,@PathVariable("uid") String uid) {
 		boo.setEventId(eid);
 		boo.setUserEmail(uid);
+		availService.reduceSeats(eid, boo.getNoSeats());
 		bookService.insertBook(boo);
 		return new ModelAndView("welcomeUser");
 

@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.ourevents.dao.AvailableDao;
 import com.ourevents.model.Available;
@@ -72,6 +73,16 @@ public class AvailableDaoImpl extends JdbcDaoSupport implements AvailableDao{
 		}catch(Exception e) {
 			return null;
 		}
+	}
+	@Override
+	public void reduceSeats(String eid, int seats) {
+		// TODO Auto-generated method stub
+		Available a = getAvailableById(eid);
+		int avai = a.getAvailSeats();
+		int rem = avai - seats;
+		String sql = "Update available set availSeats = ? where eventId = ?";
+		getJdbcTemplate().update(sql,rem,a.getEventId());
+		
 	}
 	
 }

@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page session="false"%>
 <html>
 <head>
 <title>Show Events</title>
@@ -51,7 +50,7 @@ table#t01 th {
 
 <center>
 <body>
-	
+	<%String em = (String)session.getAttribute("email");%>
 	<h3 style="color: red;">Filtered Events</h3>
 	
 	<table id ="t01" style = 'width:50%'>
@@ -64,7 +63,7 @@ table#t01 th {
 			<jsp:include page="/getVenue/${listValue.getVenId()}" />
 			<jsp:include page="/getParticipate/${listValue.getEventId()}" />
 			<jsp:include page="/getAvailable/${listValue.getEventId()}" />
-			<a href="/book/${listValue.getEventId()}" class="button2">Book</a> 
+			<a href="/book/<%=em%>/${listValue.getEventId()}" class="button2">Book</a> 
 			
 			</td>
 			

@@ -62,6 +62,12 @@ public class AvailableController {
 		return model;
 	}
 
-
+	@RequestMapping("/getAvailableAdmin/{n}")
+	public ModelAndView getEventByName2(@PathVariable("n") String n) {
+		Available avail = availService.getAvailableById(n);
+		ModelAndView model = new ModelAndView("getAvailableByIdAdmin");
+		model.addObject("avail", avail);
+		return model;
+	}
 }
 

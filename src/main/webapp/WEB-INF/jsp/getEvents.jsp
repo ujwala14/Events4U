@@ -52,7 +52,7 @@ table#t01 th {
 			<pre>${listValue.getEventType()} - ${listValue.getDescription()}</pre>
 			<jsp:include page="/getVenue/${listValue.getVenId()}" />
 			<jsp:include page="/getParticipate/${listValue.getEventId()}" />
-			<jsp:include page="/getAvailable/${listValue.getEventId()}" />
+			<jsp:include page="/getAvailableAdmin/${listValue.getEventId()}" />
 			<a href="/getEventMore/${listValue.getEventId()}">See more details</a>
 			
 			</td>

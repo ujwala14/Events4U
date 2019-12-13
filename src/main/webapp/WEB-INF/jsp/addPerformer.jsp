@@ -44,6 +44,7 @@ th, td {
 						<form:option value="Actor" label="Actor"/>
 						<form:option value="Sports person" label="Sports person"/>
 						<form:option value="Speaker" label="Speaker"/>
+						<form:option value="StandUp Comedy" label="StandUp Comedy"/>
 						<form:option value="Team" label="Team"/>
 					</form:select></td></tr>
 				

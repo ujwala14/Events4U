@@ -120,6 +120,7 @@ body {
     <button class="subnavbtn">Events <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
       <a href="/user/<%=em%>/getUserEvents">Show</a>
+      <a href="/user/<%=em%>/getUserFilter">Filter</a>
     </div>
   </div> 
   

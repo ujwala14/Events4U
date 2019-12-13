@@ -32,6 +32,6 @@ body {
 <center>
 <body>
 <br><br><br><h1 style="color: white;"> ${errmsg} </h1><br><br>
-<a href="/welcomeAdmin/">Go Back</a>
+<a href="/">Go Back</a>
 </center></body>
 </html>

@@ -10,4 +10,5 @@ public interface EventDao {
 	Event getEventById(String n);
 	List<Event> getEventsForUser(String uid);
 	List<Event> getOldEventsForUser(String uid);
+	List<Event> getEventByCategory(String n);
 }

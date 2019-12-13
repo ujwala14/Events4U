@@ -191,4 +191,32 @@ public class EventDaoImpl extends JdbcDaoSupport implements EventDao{
 		return result;
 	}
 
+	
+	@Override
+	public List<Event> getEventByCategory(String n) {
+		// TODO Auto-generated method stub
+			// TODO Auto-generated method stub
+		System.out.println(n);
+			String sql = "SELECT * FROM event where eventType = '"+n+"'";
+				List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
+				
+				List<Event> result = new ArrayList<Event>();
+				for(Map<String, Object> row:rows){
+					Event e = new Event();
+					e.setEventId((String)row.get("eventId"));
+					e.setEventName((String)row.get("eventName"));
+					e.setEventType((String)row.get("eventType"));
+					e.setDate((Date)row.get("date"));
+					e.setStartTime((Time)row.get("startTime"));
+					e.setEndTime((Time)row.get("endTime"));
+					e.setDescription((String)row.get("description"));
+					e.setVenId((String)row.get("venId"));
+					e.setCaterId((String)row.get("caterId"));
+					e.setPhotoId((String)row.get("photoId"));
+					
+					result.add(e);
+			}
+				System.out.println(result);
+			return result;
+	}
 }

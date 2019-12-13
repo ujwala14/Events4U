@@ -69,4 +69,10 @@ public class EventServiceImpl implements EventService {
 		// TODO Auto-generated method stub
 		return eventDao.getOldEventsForUser(uid);
 	}
+	
+	@Override
+	public List<Event> getEventByCategory(String n) {
+		// TODO Auto-generated method stub
+		return eventDao.getEventByCategory(n);
+	}
 }

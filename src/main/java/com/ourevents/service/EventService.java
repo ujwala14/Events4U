@@ -13,4 +13,5 @@ public interface EventService {
 	boolean checkClash(Date d,String v,Time s,Time e);
 	List<Event> getEventsForUser(String uid);
 	List<Event> getOldEventsForUser(String uid);
+	List<Event> getEventByCategory(String n);
 }

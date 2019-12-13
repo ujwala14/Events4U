@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import com.ourevents.model.Event;
+import com.ourevents.model.Filter;
 import com.ourevents.model.Participate;
 import com.ourevents.model.User;
 import com.ourevents.service.CateringService;
@@ -161,6 +162,25 @@ public class EventController {
 		ModelAndView model = new ModelAndView("getEventMore");
 		model.addObject("event", event);
 		return model;
+	}
+	
+	@RequestMapping(value = "/user/{uid}/getUserFilter", method = RequestMethod.GET)
+	public ModelAndView show2(@PathVariable("uid") String uid) {
+		User u = new User();
+		u.setEmail(uid);
+		ModelAndView model = new ModelAndView("filterUserEvents", "fil", new Filter());
+		model.addObject("uid",u);
+		return model;
+	}
+	
+	@RequestMapping(value = "/user/{uid}/getUserFilter", method = RequestMethod.POST)
+	public ModelAndView processRequest2(@ModelAttribute("fil") Filter fil) {
+			List<Event> events = eventService.getEventByCategory(fil.getValue());
+			System.out.println(events);
+			ModelAndView model = new ModelAndView("getEventByCategory");
+			model.addObject("events", events);
+			return model;
+		
 	}
 
 }

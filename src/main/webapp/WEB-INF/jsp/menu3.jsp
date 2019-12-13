@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -113,17 +114,18 @@ body {
 </style>
 
 <div class="navbar">
-    <a href="/welcomeUser/"+${param.email}>EVENTS4U</a>
+	<%String em = (String)session.getAttribute("email");%>
+    <a href="/welcomeUser/<%=em%>">EVENTS4U</a>
   <div class="subnav">
     <button class="subnavbtn">Events <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="/getUserEvents">Show</a>
+      <a href="/user/<%=em%>/getUserEvents">Show</a>
     </div>
   </div> 
   
   
-    <a href="/booked">Booked Events</a>
-  	<a href="/attended">Attended Events</a>
+    <a href="/user/<%=em%>/booked">Booked Events</a>
+  	<a href="/user/<%=em%>/attended">Attended Events</a>
   
     <a href="/">Logout</a>
 </div>

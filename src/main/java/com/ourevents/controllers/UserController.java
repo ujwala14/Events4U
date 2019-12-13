@@ -4,10 +4,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ourevents.model.Participate;
 import com.ourevents.model.User;
 import com.ourevents.service.UserService;
 
@@ -16,6 +18,13 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
+	@RequestMapping("/welcomeUser/{uid}")
+	public ModelAndView firstPageUser(@PathVariable("uid") String uid) {
+		User user = new User();
+		user.setEmail(uid);
+		return new ModelAndView("welcomeUser","u",user);
+	}
+	
     //show the add user form and also pass an empty backing bean object to store the form field values
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public ModelAndView show() {
@@ -47,7 +56,7 @@ public class UserController {
 			{
 				ModelAndView model= new ModelAndView("redirect:/welcomeUser/"+email);
 				System.out.println(user);
-				model.addObject("u",user);
+				//model.addObject("u",user);
 				return model;
 			}
 			else

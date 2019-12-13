@@ -1,9 +1,10 @@
-<%@page session="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <html>
 <head>
-<jsp:include page="menu3.jsp" >
-<jsp:param name="email" value= "${ u.getEmail()}" />
-</jsp:include>
+<jsp:include page="menu3.jsp" />
+
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -18,8 +19,7 @@ body {
 
 </head>
 <body>
- 
-	<center><h1 style="color: white;">Hello ${ u.getUserName()} !!</h1></center>
-	
+ 	<c:set var="email" value="${u.getEmail()}" scope="session" />
+	<center><h1 style="color: white;">Hello ${u.getEmail()} !!</h1></center>
 </body>
 </html>

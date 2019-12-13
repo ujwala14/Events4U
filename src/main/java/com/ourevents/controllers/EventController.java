@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ourevents.model.Event;
 import com.ourevents.model.Participate;
+import com.ourevents.model.User;
 import com.ourevents.service.CateringService;
 import com.ourevents.service.EventService;
 import com.ourevents.service.PhotographyService;
@@ -46,11 +47,7 @@ public class EventController {
 		return new ModelAndView("welcomeAdmin");
 	}
 	
-	@RequestMapping("/welcomeUser/{uid}")
-	public ModelAndView firstPageUser(@PathVariable("uid") String uid) {
-		return new ModelAndView("welcomeUser");
-	}
-	
+		
     //show the add event form and also pass an empty backing bean object to store the form field values
 	@RequestMapping(value = "/addNewEvent", method = RequestMethod.GET)
 	public ModelAndView show() {
@@ -126,11 +123,14 @@ public class EventController {
 	}
 	
 	//show all events saved in db
-		@RequestMapping("/getUserEvents")
-		public ModelAndView getUserEvents() {
+		@RequestMapping("/user/{uid}/getUserEvents")
+		public ModelAndView getUserEvents(@PathVariable("uid") String uid) {
 			List<Event> events = eventService.getAllEvents();
+			User u = new User();
+			u.setEmail(uid);
 			ModelAndView model = new ModelAndView("getUserEvents");
 			model.addObject("events", events);
+			model.addObject("uid", u);
 			return model;
 		}
 

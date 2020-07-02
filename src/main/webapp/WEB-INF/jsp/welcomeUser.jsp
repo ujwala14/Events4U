@@ -19,7 +19,9 @@ body {
 
 </head>
 <body>
+	<br><br>
  	<c:set var="email" value="${u.getEmail()}" scope="session" />
-	<center><h1 style="color: white;">Hello ${u.getEmail()} !!</h1></center>
+	<center><h1 style="color: white;">Hello ${u.getUserName()} !!</h1></center>
+	<center><h1 style="color: white;">Let's find something for you!!</h1></center>
 </body>
 </html>

@@ -16,8 +16,12 @@ body {
 
 </head>
 <body>
- 
+ 	<br><br>
 	<center><h1 style="color: white;">Hello Admin!!</h1></center>
+	<center><h1 style="color: white;">Something new?!</h1></center>
+	<center><h1 style="color: white;">Let's host up an event!!</h1></center>
+	
+	
 	
 </body>
 </html>

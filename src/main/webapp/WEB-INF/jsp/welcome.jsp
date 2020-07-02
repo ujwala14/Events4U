@@ -16,8 +16,10 @@ body {
 
 </head>
 <body>
- 
+ 	<br><br><br>
 	<center><h1 style="color: white;">Hello!!</h1></center>
+	<center><h1 style="color: white;">Welcome to Events4U!!</h1></center>
+	<center><h1 style="color: white;">Don't miss out on your favorites</h1></center>
 	
 </body>
 </html>
